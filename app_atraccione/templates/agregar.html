@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Atracción</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        form { max-width: 400px; }
+        label { display: block; margin: 10px 0 5px; }
+        input[type="text"], input[type="number"], select { width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box; }
+        button { background-color: #007BFF; color: white; padding: 10px 15px; border: none; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+    <h1>Agregar Atracción</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="tipo">Tipo:</label>
+        <input type="text" id="tipo" name="tipo" maxlength="50" required>
+
+        <label for="capacidad">Capacidad:</label>
+        <input type="number" id="capacidad" name="capacidad" required min="1">
+
+        <label for="estado">Estado:</label>
+        <select id="estado" name="estado" required>
+            <option value="Operativa">Operativa</option>
+            <option value="Mantenimiento">Mantenimiento</option>
+            <option value="Cerrada">Cerrada</option>
+            <option value="En Construcción">En Construcción</option>
+        </select>
+
+        <label for="altura_min">Altura Mínima (metros):</label>
+        <input type="number" id="altura_min" name="altura_min" step="0.01" required min="0">
+
+        <button type="submit">Guardar</button>
+    </form>
+    <a href="/">Volver al listado</a>
+</body>
+</html>
